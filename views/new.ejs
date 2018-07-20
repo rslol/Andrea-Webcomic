@@ -1,0 +1,94 @@
+<% include ./partials/header %>
+
+<div id="header">
+
+    <div class="top">
+
+        <!-- Logo -->
+        <div id="logo">
+            <span class="image avatar48">
+                <img src="img/andrea.jpg" alt="" />
+            </span>
+            <h1 id="title">Andrea Denise</h1>
+            <p>Comic Creator</p>
+            <a href="/" style="font-size: 14px;">Home</a>
+            <br>
+            <a href="/admin" style="font-size: 14px;">Admin</a>
+        </div>
+    </div>
+
+    <div class="bottom">
+
+        <!-- Social Icons -->
+        <ul class="icons">
+            <li>
+                <a href="https://www.instagram.com/dyzzyspells/" target="_blank" class="icon fa-instagram">
+                    <span class="label">Instagram</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="https://www.github.com/rslol" class="icon fa-github">
+                    <span class="label">Github</span>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+
+</div>
+
+<!-- Main -->
+<div id="main">
+
+    <!-- Intro -->
+    <section id="top" class="one dark cover">
+        <div class="container">
+            <h1 style="font-size: 48px; font-weight: 750;">New Comic Upload</h1>
+            <form action="/newComic" method="POST">
+                <input type="text" name="comic[title]" placeholder="Title of Comic" />
+                <input type="text" name="comic[slideOne]" placeholder="URL of First Slide">
+                <input type="text" name="comic[slideTwo]" placeholder="URL of Second Slide">
+                <input type="text" name="comic[slideThree]" placeholder="URL of Three Slide">
+                <input type="text" name="comic[slideFour]" placeholder="URL of Four Slide">
+                <input type="text" name="comic[slideFive]" placeholder="URL of Five Slide">
+                <textarea type="text" name="comic[description]" placeholder="Description of Comic"></textarea>
+                <button>Submit</button>
+            </form>
+
+            <h1 style="font-size: 48px; font-weight: 800; margin-top: 20px;">New Art Upload</h1>
+            <form action="/newArt" method="POST">
+                <input type="text" name="art[title]" placeholder="Title of Art">
+                <input type="text" name="art[art]" placeholder="URL of Art">
+                <textarea type="text" name="art[description]" placeholder="Description of Art"></textarea>
+                <button>Submit</button>
+            </form>
+        </div>
+    </section>
+</div>
+
+<!-- Portfolio -->
+
+
+<!-- Footer -->
+<div id="footer">
+
+    <!-- Copyright -->
+    <ul class="copyright">
+        <li>&copy; Created by Richard Shelton</li>
+    </ul>
+
+</div>
+
+<!-- Scripts -->
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.scrolly.min.js"></script>
+<script src="js/jquery.scrollex.min.js"></script>
+<script src="js/browser.min.js"></script>
+<script src="js/breakpoints.min.js"></script>
+<script src="js/util.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+
+</html>

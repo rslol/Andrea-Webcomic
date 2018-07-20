@@ -1,0 +1,171 @@
+<% include ./partials/header %> 
+
+		<!-- Header -->
+			<div id="header">
+
+				<div class="top">
+
+					<!-- Logo -->
+						<div id="logo">
+							<span class="image avatar48"><img src="img/andrea.jpg" alt="" /></span>
+							<h1 id="title">Andrea Denise</h1>
+							<p>Comic Creator</p>
+							<a href="/login" style="font-size: 14px;">Login</a>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="#top" id="top-link"><span class="icon fa-home">Intro</span></a></li>
+								<li><a href="#portfolio" id="portfolio-link"><span class="icon fa-th">Portfolio</span></a></li>
+								<li><a href="#about" id="about-link"><span class="icon fa-user">About Me</span></a></li>
+								<li><a href="#contact" id="contact-link"><span class="icon fa-envelope">Contact</span></a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+				<div class="bottom">
+
+					<!-- Social Icons -->
+						<ul class="icons">
+							<li><a href="https://www.instagram.com/dyzzyspells/" target="_blank" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+							
+							<li><a href="https://www.github.com/rslol" class="icon fa-github"><span class="label">Github</span></a></li>
+							
+							<li><a href="#contact" id="contact-link" class="icon fa-envelope"><span class="label">Email</span></a></li>
+						</ul>
+
+				</div>
+
+			</div>
+
+		<!-- Main -->
+			<div id="main">
+
+				<!-- Intro -->
+					<section id="top" class="one dark cover">
+						<div class="container">
+
+							<header>
+								<h2 class="alt">Welcome to <strong>Drea's Corner!</strong></h2>
+								<p>The place where you can see all my webcomics!</p>
+							</header>
+
+						
+
+						</div>
+					</section>
+
+				<!-- Portfolio -->
+					<section id="portfolio" class="two">
+						<div class="container">
+
+							<header>
+								<h2>My Webcomics</h2>
+							</header>
+
+							<p>My webcomics are based off of my everyday experiences. Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+
+							<div class="row">
+								<% comics.forEach((comic) => { %>
+									<div class="col-4 col-12-mobile">
+										<article class="item">	 
+											<a href="#" class="image fit"><img src="<%= comic.slideOne %>" alt="image" /></a>
+											<header>
+												<h1><%= comic.title %></h1>
+												<p><a href="/index/<%= comics._id %>">Read More!</a></p>
+											</header>
+										</article>	
+									</div>
+								<% }) %>
+							</div>	
+						</div>
+					</section>			
+										
+									
+								
+
+				<!-- About Me -->
+					<section id="about" class="three">
+						<div class="container">
+
+							<header>
+								<h2>About Me</h2>
+							</header>
+
+							<a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a>
+
+							<p>A carefree black girl from Jacksonville, FL ready to showcare my awkward moments in life as art. That being said I'm artist, </p>
+							<div class="row">
+								<% arts.forEach((art) => { %>
+									<div class="col-4 col-12-mobile">
+										<article class="item">
+											<a href="#" class="image fit">
+												<img src="<%= art.art %>" alt="image" />
+											</a>
+											<header>
+												<h3><%= art.title %></h3>
+											</header>
+										</article>
+									</div>
+								<% }) %>
+							</div>
+						</div>
+					</section>	
+									
+										
+								
+
+				<!-- Contact -->
+					<section id="contact" class="four">
+						<div class="container">
+
+							<header>
+								<h2>Contact</h2>
+							</header>
+
+							<p>Elementum sem parturient nulla quam placerat viverra
+							mauris non cum elit tempus ullamcorper dolor. Libero rutrum ut lacinia
+							donec curae mus. Eleifend id porttitor ac ultricies lobortis sem nunc
+							orci ridiculus faucibus a consectetur. Porttitor curae mauris urna mi dolor.</p>
+
+							<form method="post" action="#">
+								<div class="row">
+									<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Name" /></div>
+									<div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Email" /></div>
+									<div class="col-12">
+										<textarea name="message" placeholder="Message"></textarea>
+									</div>
+									<div class="col-12">
+										<input type="submit" value="Send Message" />
+									</div>
+								</div>
+							</form>
+
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<div id="footer">
+
+				<!-- Copyright -->
+					<ul class="copyright">
+						<li>&copy; Created by Richard Shelton</li>
+					</ul>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="js/jquery.min.js"></script>
+			<script src="js/jquery.scrolly.min.js"></script>
+			<script src="js/jquery.scrollex.min.js"></script>
+			<script src="js/browser.min.js"></script>
+			<script src="js/breakpoints.min.js"></script>
+			<script src="js/util.js"></script>
+			<script src="js/main.js"></script>
+
+	</body>
+</html>
