@@ -1,0 +1,21 @@
+<% include ./partials/header1 %>
+
+<div class="wrapper">
+    <h1><%= comic.title %></h1>
+    <div class="w3-center w3-display-container" id="showComic">
+        <img class="slides img-fluid" src="<%= comic.slideOne %>" alt="Slide One">
+        <img class="slides img-fluid" src="<%= comic.slideTwo %>" alt="Slide Two">
+        <img class="slides img-fluid" src="<%= comic.slideThree %>" alt="Slide Three">
+        <img class="slides img-fluid" src="<%= comic.slideFour %>" alt="Slide Four">
+        <img class="slides img-fluid" src="<%= comic.slideFive %>" alt="Slide Five">
+        <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+        <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+        <a href="/"><button>Back</button></a>
+    </div>
+</div>
+
+<script src="/js/showComic.js"></script>
+
+</body>
+
+</html>

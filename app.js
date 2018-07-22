@@ -126,6 +126,28 @@ app.post('/newArt', (req, res, err) => {
     });
 });
 
+/* Show Route */
+app.get('/index/:id', (req, res) => {
+    Comic.findById(req.params.id, (err, comic) => {
+        if(err){
+            console.log(err);
+        } else {
+            res.render('showComic', {comic : comic});
+        }
+    });
+});
+
+app.get('/admin/:id', (req, res) => {
+    Comic.findById(req.params.id, (err, comic) => {
+        if(err){
+            console.log(err);
+        } else {
+            res.render('showComicAdmin', {comic : comic});
+        }
+    });
+});
+
+
 /* Edit Route */
 app.get('/admin/:id/editComic', (req, res, err) => {
     Comic.findById(req.params.id, (err, comic) => {
@@ -148,9 +170,6 @@ app.get('/admin/:id/editArt', (req, res, err) => {
         }
     });
 });
-
-/* Update Route */
-
 
 /* Delete Route */
 app.get('/admin/:id', (req, res, err) => {

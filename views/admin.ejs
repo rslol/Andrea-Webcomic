@@ -108,8 +108,10 @@
                                     <h3>
                                         <%= comic.title %>
                                     </h3>
-                                    <button href="/admin/<%= comic._id %>/edit>">Edit</button>
-                                    <button href="/admin/<%= comic._id %>?_method=DELETE" method="POST">Delete</button>
+                                    <p>
+                                        <a href="/admin/<%= comic._id %>">Read More!</a>
+                                    </p>
+                                    <button><a href="/admin/<%= comic._id %>?_method=DELETE" method="POST">Delete</a></button>
                                 </header>
                             </article>
                         </div>
@@ -144,8 +146,8 @@
                                 </a>
                                 <p><%= art.title %></p>
                                 <div>
-                                    <a href="/admin/<%= art._id %>/edit>">Edit</a>
-                                    <a href="/admin/<%= art._id %>?_method=DELETE" method="POST">Delete</a>
+                                    
+                                    <button><a href="/admin/<%= art._id %>?_method=DELETE" method="POST">Delete</a></button>
                                 </div>
                             </article>
                         </div>
