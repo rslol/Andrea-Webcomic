@@ -8,8 +8,9 @@ const   express                 = require('express'),
         localStrategy           = require('passport-local'),
         expressSession          = require('express-session'),
         passport                = require('passport'),  
-        config                  = require('./server');
-        User                    = require('./user');
+        config                  = require('./server'),
+        User                    = require('./user'),
+        permission              = require('permission');
 
 mongoose.connect(config.database, (err) => {
     if(err){
@@ -42,6 +43,12 @@ const artSchema = new mongoose.Schema ({
 
 const Art = mongoose.model('Art', artSchema);
 
+/* Permission: How to handle someone logged in */
+const notAuthenticated = {
+    redirect: '/login'
+}
+
+
 app.use(expressSession({
     secret: "This really should get me a job omg",
     resave: false, 
@@ -58,6 +65,12 @@ app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+/* Permission: When to use the notAuthenticated Function */
+app.set('permission', {
+    role: 'username', 
+    notAuthenticated: notAuthenticated
+});
+
 
 /* Index Page */
 app.get('/', (req, res, err) => {
@@ -71,6 +84,28 @@ app.get('/', (req, res, err) => {
             }
         })
     })
+});
+
+/* Register Page */
+app.get('/register', (req, res, err) => {
+    res.render('register');
+    if(err){
+        console.log(err);
+    }
+})
+
+app.post('/register', (req, res, err) => {
+    const newUser = new User({username: req.body.username.toLowerCase()});
+    User.register(newUser, req.body.password, (err, user) => {
+        try {
+            passport.authenticate("local")(req, res, () => {
+                res.redirect('/admin');
+            })
+        } catch(err) {
+            console.log(err);
+            return res.render('register');
+        }
+    });
 });
 
 /* Login Page */
@@ -91,7 +126,7 @@ app.get('/logout', (req, res) => {
 })
 
 /* Drea's Page */
-app.get('/admin', (req, res, err) => {
+app.get('/admin', permission(), (req, res, err) => {
     Comic.find({}, (err, comics) => {
         Art.find({}, (err, arts) => {
             console.log(comics);
@@ -103,7 +138,7 @@ app.get('/admin', (req, res, err) => {
 });
 
 /* New Route */
-app.get('/new', (req, res, err) => {
+app.get('/new', permission(), (req, res, err) => {
     res.render('new');
 });
 
@@ -117,7 +152,7 @@ app.post('/newComic', (req, res, err) => {
     });
 });
 
-app.post('/newArt', (req, res, err) => {
+app.post('/newArt', permission(), (req, res, err) => {
     req.body.art.description = req.sanitize(req.body.art.description);
     Art.create(req.body.art, (err, newArt) => {
         if(err) throw err;
@@ -137,7 +172,7 @@ app.get('/index/:id', (req, res) => {
     });
 });
 
-app.get('/admin/:id', (req, res) => {
+app.get('/admin/:id/read', (req, res) => {
     Comic.findById(req.params.id, (err, comic) => {
         if(err){
             console.log(err);
@@ -147,32 +182,8 @@ app.get('/admin/:id', (req, res) => {
     });
 });
 
-
-/* Edit Route */
-app.get('/admin/:id/editComic', (req, res, err) => {
-    Comic.findById(req.params.id, (err, comic) => {
-        if(err){
-            console.log(err);
-            res.redirect('/admin');
-        } else {
-            res.render('editComic', {comic: comic});
-        }
-    });
-});
-
-app.get('/admin/:id/editArt', (req, res, err) => {
-    Art.findById(req.params.id, (err, art) => {
-        if(err){
-            console.log(err);
-            res.redirect('/admin');
-        } else {
-            res.render('editArt', {art: art});
-        }
-    });
-});
-
 /* Delete Route */
-app.get('/admin/:id', (req, res, err) => {
+app.get('/admin/:id', permission(), (req, res, err) => {
     Comic.findByIdAndRemove(req.params.id, (err) => {
         Art.findByIdAndRemove(req.params.id, (err) => {
             if (err) throw err;

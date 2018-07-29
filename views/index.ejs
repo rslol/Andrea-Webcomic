@@ -17,8 +17,8 @@
 						<nav id="nav">
 							<ul>
 								<li><a href="#top" id="top-link"><span class="icon fa-home">Intro</span></a></li>
-								<li><a href="#portfolio" id="portfolio-link"><span class="icon fa-th">Portfolio</span></a></li>
-								<li><a href="#about" id="about-link"><span class="icon fa-user">About Me</span></a></li>
+								<li><a href="#portfolio" id="portfolio-link"><span class="icon fa-th">Web Comics</span></a></li>
+								<li><a href="#about" id="about-link"><span class="icon fa-user">Art</span></a></li>
 								<li><a href="#contact" id="contact-link"><span class="icon fa-envelope">Contact</span></a></li>
 							</ul>
 						</nav>
@@ -31,7 +31,7 @@
 						<ul class="icons">
 							<li><a href="https://www.instagram.com/dyzzyspells/" target="_blank" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
 							
-							<li><a href="https://www.github.com/rslol" class="icon fa-github"><span class="label">Github</span></a></li>
+							<li><a href="https://www.github.com/rslol" target="_blank" class="icon fa-github"><span class="label">Github</span></a></li>
 							
 							<li><a href="#contact" id="contact-link" class="icon fa-envelope"><span class="label">Email</span></a></li>
 						</ul>
@@ -91,17 +91,19 @@
 						<div class="container">
 
 							<header>
-								<h2>About Me</h2>
+								<h2>My Art</h2>
 							</header>
 
-							<a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a>
+							
 
-							<p>A carefree black girl from Jacksonville, FL ready to showcare my awkward moments in life as art. That being said I'm artist, </p>
+							<p>A carefree black girl from Jacksonville, FL ready to showcase my awkward moments in life as art. That being said I'm artist, an illustrator, and a civil rights activist. 
+								If you like any of my comics or art, please reach out to me via the contact form below. Thank you!
+							</p>
 							<div class="row">
 								<% arts.forEach((art) => { %>
 									<div class="col-4 col-12-mobile">
 										<article class="item">
-											<a href="#" class="image fit">
+											<a class="image fit">
 												<img src="<%= art.art %>" alt="image" />
 											</a>
 											<header>
@@ -125,12 +127,11 @@
 								<h2>Contact</h2>
 							</header>
 
-							<p>Elementum sem parturient nulla quam placerat viverra
-							mauris non cum elit tempus ullamcorper dolor. Libero rutrum ut lacinia
-							donec curae mus. Eleifend id porttitor ac ultricies lobortis sem nunc
-							orci ridiculus faucibus a consectetur. Porttitor curae mauris urna mi dolor.</p>
+							<p>So if you like what you see and you want to reach out and talk to me, please contact me here through this form and I will check my emails
+								as soon as possible. This also includes commissions and job opportunities. Dont' be shy, contact me!
+							</p>
 
-							<form method="post" action="#">
+							<form method="post" action="mailto:Theandreadenise@gmail.com">
 								<div class="row">
 									<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Name" /></div>
 									<div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Email" /></div>
@@ -159,6 +160,7 @@
 			</div>
 
 		<!-- Scripts -->
+		
 			<script src="js/jquery.min.js"></script>
 			<script src="js/jquery.scrolly.min.js"></script>
 			<script src="js/jquery.scrollex.min.js"></script>
@@ -166,6 +168,6 @@
 			<script src="js/breakpoints.min.js"></script>
 			<script src="js/util.js"></script>
 			<script src="js/main.js"></script>
-
+			
 	</body>
 </html>

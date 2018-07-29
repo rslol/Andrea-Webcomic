@@ -2042,6 +2042,7 @@ input, select, textarea {
 		text-align: right;
 		top: 0;
 		width: 375px;
+		overflow-y: hidden;
 	}
 
 		#header .top {
